@@ -43,7 +43,7 @@ Check your current balance.
 
 React to a message with the custom gold emoji.
 
-Give gold to another user by reacting to their message with the gold emoji. Giving gold costs $25 from your balance.
+Give gold to another user by reacting to their message with the gold emoji. Giving gold costs $50 from your balance.
 
 ### Gold Leaderboard
 
