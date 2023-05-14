@@ -162,11 +162,11 @@ const Leaderboard = mongoose.model("Leaderboard", leaderboardSchema);
 async function giveGold(senderId, receiverId) {
 	try {
 		const sender = await Economy.findOne({ userId: senderId });
-		if (!sender || sender.balance < 10) {
+		if (!sender || sender.balance < 50) {
 			throw new Error("You don't have enough balance to give Gold.");
 		}
 
-		sender.balance -= 10;
+		sender.balance -= 50; // Deducting $50 from the sender's balance
 		await sender.save();
 
 		// Add gold to the receiver's balance

@@ -63,7 +63,7 @@ async function giveGoldByReaction(targetMessage, user) {
 		const success = await giveGold(user.id, targetUser.id);
 		if (success) {
 			targetMessage.channel.send(
-				`${user.username} gave ${targetUser.username} Gold! ${user.username}'s balance has been reduced by $25.`
+				`${user.username} gave ${targetUser.username} Gold! ${user.username}'s balance has been reduced by $50.`
 			);
 		}
 	} catch (error) {
