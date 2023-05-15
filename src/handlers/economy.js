@@ -212,6 +212,7 @@ async function getGoldLeaderboard() {
 	}
 }
 
+// Function to get a user's Gold amount
 async function getUserGold(userId) {
 	try {
 		const userEntry = await Leaderboard.findOne({ userId });
@@ -219,6 +220,17 @@ async function getUserGold(userId) {
 	} catch (error) {
 		console.error("Error occurred while getting user gold: ", error);
 		throw new Error("An error occurred while getting the user's gold.");
+	}
+}
+
+// Function to get balance leaderboard
+async function getBalanceLeaderboard() {
+	try {
+		const leaderboard = await Economy.find({}).sort({ balance: -1 }).limit(10);
+		return leaderboard;
+	} catch (error) {
+		console.error("Error occurred while getting balance leaderboard: ", error);
+		throw new Error("An error occurred while getting the balance leaderboard.");
 	}
 }
 
@@ -232,4 +244,5 @@ module.exports = {
 	boostEarnings,
 	boostCooldowns,
 	getUserGold,
+	getBalanceLeaderboard,
 };

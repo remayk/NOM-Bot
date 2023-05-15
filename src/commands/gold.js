@@ -28,19 +28,16 @@ async function execute(message, client) {
 			if (leaderboard.length === 0) {
 				embed.addFields({ name: "\u200B", value: "No data available." });
 			} else {
-				// Loop through the leaderboard and display each user's Gold count and balance
+				// Loop through the leaderboard and display each user's Gold count
 				for (let i = 0; i < leaderboard.length; i++) {
 					const medalEmoji =
-						i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `${i + 1}.`;
+						i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `**#${i + 1}**`;
 					const user = await client.users.fetch(leaderboard[i].userId);
 					const gold = leaderboard[i].goldReceived;
-					const balance = await getBalance(user.id);
 
 					embed.addFields({
 						name: "\u200B",
-						value: `${medalEmoji} <@!${
-							user.id
-						}>\nGold: \`${gold}\`\nBal: \`$${balance.toFixed(2)}\``, // Display medal emoji or rank, mention the user, Gold count, and balance
+						value: `${medalEmoji} <@!${user.id}>\nGold: \`${gold}\``, // Display medal emoji or rank, mention the user, and Gold count
 						inline: false,
 					});
 				}

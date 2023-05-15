@@ -3,6 +3,7 @@ const chatbotCommand = require("../commands/chatbot");
 const balanceCommand = require("../commands/balance");
 const goldCommand = require("../commands/gold");
 const boostCommand = require("../commands/boost");
+const baltopCommand = require("../commands/baltop");
 
 // A mapping of command names to their respective modules
 const commands = {
@@ -11,6 +12,7 @@ const commands = {
 	"..bal": balanceCommand,
 	"..gold": goldCommand,
 	"..boost": boostCommand,
+	"..baltop": baltopCommand,
 };
 
 /**
@@ -20,8 +22,8 @@ const commands = {
  */
 async function handleCommand(message, client) {
 	// Finding the command that matches the message content
-	const command = Object.keys(commands).find((cmd) =>
-		message.content.startsWith(cmd)
+	const command = Object.keys(commands).find(
+		(cmd) => message.content.trim() === cmd
 	);
 
 	// If a command is found, execute it
