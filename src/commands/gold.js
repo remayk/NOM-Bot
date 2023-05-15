@@ -1,4 +1,8 @@
-const { giveGold, getGoldLeaderboard } = require("../handlers/economy");
+const {
+	giveGold,
+	getGoldLeaderboard,
+	getUserGold,
+} = require("../handlers/economy");
 const { EmbedBuilder } = require("discord.js");
 
 // Function to execute the "..gold" command
@@ -61,8 +65,12 @@ async function giveGoldByReaction(targetMessage, user) {
 	try {
 		// Give gold to the target user and update the user's balance
 		await giveGold(user.id, targetUser.id);
+
+		// Get the total gold amount for the recipient
+		const totalGoldAmount = await getUserGold(targetUser.id);
+
 		targetMessage.channel.send(
-			`${user.username} gave ${targetUser.username} Gold! ${user.username}'s balance has been reduced by $50.`
+			`<@${targetUser.id}>, you got Gold from <@${user.id}>! You've gotten ${totalGoldAmount} so far.`
 		);
 	} catch (error) {
 		// Only throw the error if it's not an insufficient balance error

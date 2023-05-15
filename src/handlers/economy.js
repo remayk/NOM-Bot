@@ -212,6 +212,16 @@ async function getGoldLeaderboard() {
 	}
 }
 
+async function getUserGold(userId) {
+	try {
+		const userEntry = await Leaderboard.findOne({ userId });
+		return userEntry ? userEntry.goldReceived : 0;
+	} catch (error) {
+		console.error("Error occurred while getting user gold: ", error);
+		throw new Error("An error occurred while getting the user's gold.");
+	}
+}
+
 module.exports = {
 	mine,
 	getBalance,
@@ -221,4 +231,5 @@ module.exports = {
 	getBoostTimeLeft,
 	boostEarnings,
 	boostCooldowns,
+	getUserGold,
 };
