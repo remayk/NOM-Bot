@@ -60,14 +60,17 @@ async function giveGoldByReaction(targetMessage, user) {
 
 	try {
 		// Give gold to the target user and update the user's balance
-		const success = await giveGold(user.id, targetUser.id);
-		if (success) {
-			targetMessage.channel.send(
-				`${user.username} gave ${targetUser.username} Gold! ${user.username}'s balance has been reduced by $50.`
-			);
-		}
+		await giveGold(user.id, targetUser.id);
+		targetMessage.channel.send(
+			`${user.username} gave ${targetUser.username} Gold! ${user.username}'s balance has been reduced by $50.`
+		);
 	} catch (error) {
-		console.error("Error occurred while giving Gold: ", error);
+		// Only throw the error if it's not an insufficient balance error
+		if (error.message !== "You don't have enough balance to give Gold.") {
+			throw error;
+		}
+		// Send a custom error message to the user in the chat
+		targetMessage.channel.send("You don't have enough balance to give Gold!");
 	}
 }
 

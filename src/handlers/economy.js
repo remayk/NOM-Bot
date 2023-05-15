@@ -192,8 +192,10 @@ async function giveGold(senderId, receiverId) {
 
 		return true;
 	} catch (error) {
-		console.error("Error occurred while giving Gold: ", error);
-		throw new Error("An error occurred while giving Gold.");
+		if (error.message !== "You don't have enough balance to give Gold.") {
+			console.error("Error occurred while giving Gold: ", error);
+		}
+		throw error;
 	}
 }
 
