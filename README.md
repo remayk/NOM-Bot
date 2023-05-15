@@ -39,6 +39,14 @@ Usage: Send `..bal` in the chat.
 
 Check your current balance.
 
+### Balance Leaderboard
+
+Command: `..baltop`
+
+Usage: Send `..baltop` in the chat.
+
+View the top balance users.
+
 ### Give Gold
 
 React to a message with the custom gold emoji.
