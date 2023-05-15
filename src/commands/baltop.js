@@ -14,7 +14,7 @@ module.exports = {
 				.setColor("#85bb65")
 				.setTitle("No Motive")
 				.setAuthor({ name: "Balance Leaderboard" })
-				.setDescription("Top User Balances")
+				.setDescription("The Rich List")
 				.setThumbnail(
 					"https://cdn.discordapp.com/attachments/197213282493399041/1050966597688377426/no_motive.png"
 				);
