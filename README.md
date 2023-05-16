@@ -31,6 +31,14 @@ Usage: Send `..mine` in the chat.
 
 Mine for virtual currency. You can mine once per minute.
 
+### Boost
+
+Command: `..boost`
+
+Usage: Send `..boost` in the chat.
+
+Activate a boost that allows you to mine multiple times for 10 seconds without cooldowns. Boosts can be used once per hour.
+
 ### Balance
 
 Command: `..bal`
@@ -61,10 +69,12 @@ Usage: Send `..gold` in the chat.
 
 View the top 10 users who have received the most gold.
 
-### Boost
+### Reputation Leaderboard
 
-Command: `..boost`
+Command: `..rep`
 
-Usage: Send `..boost` in the chat.
+Usage: Send `..rep` in the chat.
 
-Activate a boost that allows you to mine multiple times for 10 seconds without cooldowns. Boosts can be used once per hour.
+Views the top reputation leaders of the server.
+
+
