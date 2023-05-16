@@ -5,6 +5,7 @@ const { Client, GatewayIntentBits } = require("discord.js");
 const { discordToken, chatChannelId } = require("./config/config");
 const commandHandler = require("./handlers/commandHandler");
 const goldCommand = require("./commands/gold");
+const { updateReputation } = require("./handlers/reputation");
 
 // Initializing the Discord client and defining the intents
 const client = new Client({
@@ -31,6 +32,8 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
 	const goldEmojiId = "1105966765466468525";
 	const goldEmoji = client.emojis.cache.get(goldEmojiId);
+	const upvoteEmojiId = "1107890878133043200";
+	const downvoteEmojiId = "1107890932092764220";
 
 	// Checking if the reaction is the custom gold emoji
 	if (reaction.emoji.id === goldEmojiId) {
@@ -41,6 +44,32 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
 		// Add the custom gold emoji reaction to the target message
 		await targetMessage.react(goldEmoji);
+	}
+
+	// Check if reaction is upvote or downvote emoji
+	if (
+		reaction.emoji.id === upvoteEmojiId ||
+		reaction.emoji.id === downvoteEmojiId
+	) {
+		const targetMessage = reaction.message;
+
+		const deltaRep = reaction.emoji.id === upvoteEmojiId ? 1 : -1; // +1 for upvotes, -1 for downvotes
+
+		try {
+			const newRepValue = await updateReputation(
+				targetMessage.author.id,
+				deltaRep
+			);
+
+			// Add custom emoji reactions to target message
+			const customUpVoteReaction = client.emojis.cache.get(upvoteEmojiId);
+			const customDownVoteReaction = client.emojis.cache.get(downvoteEmojiId);
+
+			await targetMessage.react(customUpVoteReaction);
+			await targetMessage.react(customDownVoteReaction);
+		} catch (error) {
+			console.error("Error occurred while updating user's reputation:", error);
+		}
 	}
 });
 

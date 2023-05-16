@@ -4,6 +4,7 @@ const balanceCommand = require("../commands/balance");
 const goldCommand = require("../commands/gold");
 const boostCommand = require("../commands/boost");
 const baltopCommand = require("../commands/baltop");
+const repCommand = require("../commands/rep");
 
 // A mapping of command names to their respective modules
 const commands = {
@@ -13,6 +14,7 @@ const commands = {
 	"..gold": goldCommand,
 	"..boost": boostCommand,
 	"..baltop": baltopCommand,
+	"..rep": repCommand,
 };
 
 /**
