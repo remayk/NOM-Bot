@@ -1,6 +1,6 @@
 # NOM Bot
 
-NOM Bot is a Discord bot built using Discord.js, featuring a chatbot, economy system, and mining game. Users can chat with the bot, mine for virtual currency, check their balance, give gold to others, and use boosts to mine faster. 
+NOM Bot is a Discord bot built using Discord.js, Node.js, and MongoDB, featuring a chatbot, economy system, and mining game. Users can chat with the bot, mine for virtual currency, check their balance, give gold to others, and use boosts to mine faster. 
 
 This is my first time having the opportunity to work on a coding project. I believe this project will give me a chance to learn new skills, and further develop my problem-solving abilities.
 
