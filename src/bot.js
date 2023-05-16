@@ -2,7 +2,7 @@
 
 // Dependencies
 const { Client, GatewayIntentBits } = require("discord.js");
-const { discordToken, chatChannelId } = require("./config/config");
+const { discordToken } = require("./config/config");
 const commandHandler = require("./handlers/commandHandler");
 const goldCommand = require("./commands/gold");
 const { updateReputation } = require("./handlers/reputation");
@@ -76,7 +76,6 @@ client.on("messageReactionAdd", async (reaction, user) => {
 // Handle messages
 client.on("messageCreate", async (message) => {
 	if (message.author.bot) return;
-	if (message.channel.id !== chatChannelId) return;
 
 	// Handling commands using the command handler
 	await commandHandler(message, client);
