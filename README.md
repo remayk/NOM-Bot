@@ -69,7 +69,7 @@ Usage: Send `..gold` in the chat.
 
 View the top 10 users who have received the most gold.
 
-## Give Reputation
+### Give Reputation
 
 React to a message with a custom upvote and downvote emoji to upvote or downvote a post.
 
